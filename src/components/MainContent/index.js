@@ -5,15 +5,18 @@ import MainRight from "./MainRight";
 import styled from "styled-components";
 
 const StyledContainer = styled.div`
-  margin-left: 16rem;
-  width: 100%;
-  z-index: 1;
-  border-radius: 30px;
-  background-color: inherit;
 
   .main-chat-container {
     display: flex;
   }
+
+  @media (max-width: 768px) {
+    .main-chat-container {
+      flex-direction: column;
+      overflow: auto;
+    }
+  }
+
 `;
 
 function MainContent() {

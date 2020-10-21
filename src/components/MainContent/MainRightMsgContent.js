@@ -10,6 +10,10 @@ const StyledContainer = styled.div`
   margin-top: 1rem;
   padding: 1rem;
   height: 56vh;
+
+  @media (max-width: 768px) {
+    height: 73vh;
+  }
 `;
 
 function MainRightMsgContent() {

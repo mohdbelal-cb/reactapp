@@ -10,6 +10,13 @@ const StyledContainer = styled.div`
   height: 80vh;
   background: linear-gradient(to bottom, #b48eff 0%, #687ed1 100%);
   border-radius: 30px;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    padding: 1rem;
+    height: 100vh;
+    // display: none;
+  }
 `;
 
 

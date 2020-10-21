@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
+import {messages} from '../../service';
 
 const StyledContainer = styled.div`
   height: 85%;
@@ -58,28 +59,25 @@ const StyledContainer = styled.div`
     margin: 5px;
     margin-bottom: 10px;
   }
-
 `;
+
 
 function MessageContainer() {
   return (
     <StyledContainer>
-      <div className="msg-left-content">
-        <Typography className="msg-left">This is left messsageThis is right messsageThis is right messsage This is right messsageThis is right messsage</Typography>
-        <Typography className="msg-time">3:35 PM</Typography>
-      </div>
-      <div className="msg-right-content">
-        <Typography className="msg-right">Okay!</Typography>
-        <Typography className="msg-time">3:35 PM</Typography>
-      </div>
-      <div className="msg-left-content">
-        <Typography className="msg-left">This is left messsageThis is right messsageThis is right messsage This is right messsageThis is right messsage</Typography>
-        <Typography className="msg-time">3:35 PM</Typography>
-      </div>
-      <div className="msg-right-content">
-        <Typography className="msg-right">Okay!</Typography>
-        <Typography className="msg-time">3:35 PM</Typography>
-      </div>
+      {messages.map((message, index) => {
+        return message.status === "received" ? (
+          <div className="msg-left-content" key={index}>
+            <Typography className="msg-left">{message.content}</Typography>
+            <Typography className="msg-time">{message.createdAt}</Typography>
+          </div>
+        ) : (
+          <div className="msg-right-content" key={index}>
+            <Typography className="msg-right">{message.content}</Typography>
+            <Typography className="msg-time">{message.createdAt}</Typography>
+          </div>
+        );
+      })}
     </StyledContainer>
   );
 }

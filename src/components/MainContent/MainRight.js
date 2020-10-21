@@ -6,7 +6,11 @@ import styled from "styled-components";
 const StyledContainer = styled.div`
   width: 59%;
   padding: 3rem 2rem 0 3rem;
-  // height: 100%;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    padding: 1rem;
+  }
 
 `;
 

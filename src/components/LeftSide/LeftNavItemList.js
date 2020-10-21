@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import LeftNavItem from "./LeftNavItem";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
@@ -14,38 +15,60 @@ const StyledContainer = styled.div`
   overflow: auto;
 `;
 
-const leftNavItems = [
+let _leftNavItems = [
   {
     icon: <HomeOutlinedIcon />,
     title: "properties",
+    active: false
   },
   {
     icon: <ChatBubbleOutlineIcon />,
     title: "chat",
+    active: false
   },
   {
     icon: <EventNoteIcon />,
     title: "calendar",
+    active:false
   },
   {
     icon: <LocalOfferOutlinedIcon />,
     title: "offer",
+    active:false
   },
   {
     icon: <AssignmentOutlinedIcon />,
     title: "documents",
+    active:false
   },
   {
     icon: <SettingsOutlinedIcon />,
     title: "settings",
+    active:false
   },
 ];
 
 function LeftNavItemList() {
+
+  const [leftNavItems, setLeftNavItems] = useState(_leftNavItems);
+  
+  const history = useHistory();
+
+  const handleClick = (leftNavItem) => {
+    history.push("/" + leftNavItem.title);
+    let newLeftNavItems = leftNavItems.map(item => {
+      item.active = false;
+      if (item.title === leftNavItem.title)
+        item.active = true;
+      return item;
+    });
+    setLeftNavItems(newLeftNavItems);
+  }
+
   return (
     <StyledContainer>
       {leftNavItems.map((leftNavItem, index) => {
-        return <LeftNavItem leftNavItem={leftNavItem} key={index} />;
+        return <LeftNavItem leftNavItem={leftNavItem} key={index} handleClick={() => handleClick(leftNavItem)} />;
       })}
     </StyledContainer>
   );

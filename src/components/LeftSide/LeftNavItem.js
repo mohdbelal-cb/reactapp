@@ -12,6 +12,9 @@ const StyledContainer = styled.div`
     background: #a28cf0;
     border-left: 3px solid #d1a2fe;
   }
+  &.active {
+    background: #a28cf0;
+  }
   .left-nav-item-title {
     text-transform: uppercase;
     font-size: 0.9rem;
@@ -23,14 +26,17 @@ const StyledContainer = styled.div`
 `;
 
 function LeftNavItem(props) {
-  const {leftNavItem} = props;
+  const { leftNavItem, handleClick } = props;
 
   return (
-    <StyledContainer>
-      <div className="left-nav-item-icon">
-        {leftNavItem.icon}
-      </div>
-      <Typography className="left-nav-item-title">{leftNavItem.title}</Typography>
+    <StyledContainer
+      onClick={handleClick}
+      className={leftNavItem.active === true ? "active": ""}
+    >
+      <div className="left-nav-item-icon">{leftNavItem.icon}</div>
+      <Typography className="left-nav-item-title">
+        {leftNavItem.title}
+      </Typography>
     </StyledContainer>
   );
 }

@@ -63,21 +63,29 @@ const StyledContainer = styled.div`
     font-size: 0.9rem;
     margin-bottom: 5px;
   }
+  
+  @media (max-width: 768px) {
+    .person-msg {
+      width: 65%;
+    }
+  }
 `;
 
-function MainLeftPersonInfo() {
+function MainLeftPersonInfo(props) {
+  const {person} = props;
+
   return (
     <StyledContainer>
-      <img alt="person" src={require("../../assets/woman.jpg")} />
+      <img alt="person" src={person.info.image} />
       <div className="main-left-person-info">
-        <Typography className="person-name">Camrina</Typography>
+        <Typography className="person-name">{person.info.name}</Typography>
         <Typography className="person-msg">
-          I'm looking to work wiht designer that something
+          {person.message.content}
         </Typography>
       </div>
       <div className="main-left-msg-info">
-        <Typography className="msg-date">03 Mar</Typography>
-        <Typography className="msg-number">5</Typography>
+        <Typography className="msg-date">{person.message.date}</Typography>
+        <Typography className="msg-number">{person.message.num}</Typography>
       </div>
     </StyledContainer>
   );

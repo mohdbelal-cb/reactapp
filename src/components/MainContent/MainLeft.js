@@ -12,6 +12,12 @@ const StyledContainer = styled.div`
     color: #000154;
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    padding: 2rem;
+    // display: none;
+  }
 `;
 
 const StyledSearch = styled.div`
